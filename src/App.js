@@ -48,6 +48,7 @@ const App = () => {
                   </p>
                 );
               })}
+              <img className="flag" src={nation.flags.png} alt="country-flag" />
             </div>
           );
         })}
