@@ -24,9 +24,14 @@ const App = () => {
   return (
     <div>
       search countries: <input value={value} onChange={changeValues} />
-      {nationData.map((nation) => {
-        return <h4 key={nation.tld}>{nation.name.common}</h4>;
-      })}
+      {nationData.length > 10}
+      {nationData.length > 10 && (
+        <h4>Too many matches, specify another filter</h4>
+      )}
+      {nationData.length <= 10 &&
+        nationData.map((nation) => {
+          return <h4 key={nation.name.common}>{nation.name.common}</h4>;
+        })}
     </div>
   );
 };
