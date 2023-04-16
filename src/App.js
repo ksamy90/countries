@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Button from "./components/Button";
+import Map from "./components/Map";
 
 const App = () => {
   const [value, setValue] = useState("");
   const [countries, setCountries] = useState([]);
+  const [showMap, setShowMap] = useState(false);
 
   useEffect(() => {
     if (value) {
@@ -20,6 +23,9 @@ const App = () => {
 
   const changeValues = (e) => {
     setValue(e.target.value);
+  };
+  const showMapData = () => {
+    setShowMap(!showMap);
   };
   return (
     <div>
@@ -38,6 +44,8 @@ const App = () => {
           return (
             <div key={nation.name.common}>
               <h4>{nation.name.common}</h4>
+              {showMap && <Map position={nation.capitalInfo.latlng} />}
+              <Button onClick={showMapData} text="show-map" />
               <p>capital {nation.capital[0]}</p>
               <p>area {nation.area}</p>
               <h5>languages</h5>
