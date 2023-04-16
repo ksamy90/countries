@@ -29,8 +29,27 @@ const App = () => {
         <h4>Too many matches, specify another filter</h4>
       )}
       {nationData.length <= 10 &&
+        nationData.length > 1 &&
         nationData.map((nation) => {
           return <h4 key={nation.name.common}>{nation.name.common}</h4>;
+        })}
+      {nationData.length === 1 &&
+        nationData.map((nation) => {
+          return (
+            <div key={nation.name.common}>
+              <h4>{nation.name.common}</h4>
+              <p>capital {nation.capital[0]}</p>
+              <p>area {nation.area}</p>
+              <h5>languages</h5>
+              {Object.entries(nation.languages).map(([key, val], index) => {
+                return (
+                  <p key={index}>
+                    {key}: {val}
+                  </p>
+                );
+              })}
+            </div>
+          );
         })}
     </div>
   );
