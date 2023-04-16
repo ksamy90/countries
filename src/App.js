@@ -45,7 +45,7 @@ const App = () => {
             <div key={nation.name.common}>
               <h4>{nation.name.common}</h4>
               {showMap && <Map position={nation.capitalInfo.latlng} />}
-              <Button onClick={showMapData} text="show-map" />
+              <Button onClick={showMapData} text="show-map" cssbtn={showMap} />
               <p>capital {nation.capital[0]}</p>
               <p>area {nation.area}</p>
               <h5>languages</h5>
