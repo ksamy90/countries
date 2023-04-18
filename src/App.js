@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Button from "./components/Button";
 import Map from "./components/Map";
+import Weather from "./components/Weather";
 
 const App = () => {
   const [value, setValue] = useState("");
@@ -41,6 +42,7 @@ const App = () => {
         })}
       {nationData.length === 1 &&
         nationData.map((nation) => {
+          const [longitude, latitude] = nation.capitalInfo.latlng;
           return (
             <div key={nation.name.common}>
               <h4>{nation.name.common}</h4>
@@ -57,6 +59,12 @@ const App = () => {
                 );
               })}
               <img className="flag" src={nation.flags.png} alt="country-flag" />
+              <Weather
+                latitude={latitude}
+                longitude={longitude}
+                value={value}
+                city={nation.capital[0]}
+              />
             </div>
           );
         })}

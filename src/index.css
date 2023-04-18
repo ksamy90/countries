@@ -1,3 +1,11 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.wind {
+  margin-top: -20px;
+}
+
 .flag {
   width: 180px;
   height: 120px;
@@ -11,4 +19,8 @@
 
 .btn-map {
   margin-top: 20px;
+}
+
+.image-weather {
+  margin-top: -30px;
 }
