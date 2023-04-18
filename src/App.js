@@ -31,7 +31,6 @@ const App = () => {
   return (
     <div>
       search countries: <input value={value} onChange={changeValues} />
-      {nationData.length > 10}
       {nationData.length > 10 && (
         <h4>Too many matches, specify another filter</h4>
       )}
@@ -47,7 +46,11 @@ const App = () => {
             <div key={nation.name.common}>
               <h4>{nation.name.common}</h4>
               {showMap && <Map position={nation.capitalInfo.latlng} />}
-              <Button onClick={showMapData} text="show-map" cssbtn={showMap} />
+              <Button
+                onClick={showMapData}
+                text={showMap ? "close-map" : "show-map"}
+                cssbtn={showMap}
+              />
               <p>capital {nation.capital[0]}</p>
               <p>area {nation.area}</p>
               <h5>languages</h5>
